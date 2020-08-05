@@ -1,0 +1,11 @@
+sudo ./build.sh
+sudo ./configure
+sudo make
+sudo make install
+sudo touch ~/waf-release/ModSecurity/ModSecurity-nginx/src/*
+cd ~/waf-release/ModSecurity/nginx-1.15.7
+sudo ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx
+sudo make modules
+sudo make install
+sudo /usr/local/nginx/sbin/nginx -s stop
+sudo /usr/local/nginx/sbin/nginx
